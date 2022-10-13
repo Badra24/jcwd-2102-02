@@ -5,8 +5,8 @@ import { useState, useRef, useEffect } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import Image from 'next/image'
 import invalidToken from '../../assets/imgs/invalid.gif'
-import ForgetPassForm from "../../Component/User/ForgetPassform/ForgetPassForm"
-import Page from "../../Component/User/upTag/upTag"
+import ForgetPassForm from "../../Component/User/Authentication/ForgetPassForm"
+import Page from "../../Component/User/Authentication/Tag"
 
 export default function changePass() {
   const [verified, setVerified] = useState(false)
