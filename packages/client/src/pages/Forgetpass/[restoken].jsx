@@ -12,7 +12,7 @@ export default function changePass() {
   const [verified, setVerified] = useState(false)
   const router = useRouter()
   const { restoken } = router.query
-  const url = "http://localhost:3000" + router.pathname;
+  const url = "https://jcwd210202.purwadhikabootcamp.com/://localhost:3000" + router.pathname; 
 
 
 
