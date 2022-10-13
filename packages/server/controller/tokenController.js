@@ -1,4 +1,4 @@
-const { Token, User } = require("../models");
+const { Token } = require("../models");
 
 class tokenController {
   static async addToken(req, res) {
@@ -23,7 +23,7 @@ class tokenController {
   static async getAllToken(req, res) {
     try {
       let findTokens = await Token.findAll({
-        include: [User],
+       
       });
       res.status(200).json({ status: "success", result: findTokens });
     } catch (error) {

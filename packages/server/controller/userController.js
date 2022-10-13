@@ -1,4 +1,4 @@
-const { User, Address, Cart } = require("../models");
+const { User, Address, Cart,Token } = require("../models");
 const { Op, where } = require("sequelize");
 const bcrypt = require("bcrypt");
 const { generateToken, verifyToken } = require("../lib/jwt");
@@ -21,8 +21,8 @@ async function SendVerification(id, email, username) {
   return verToken;
 }
 
-async function resetPassword(email) {
-  const token = generateToken({ email, isEmailVerification: true }, "10000s");
+async function resetPassword(email,token) {
+ 
   const url_reset = process.env.LINK_FORGETPASS + token;
 
   await mailer({
@@ -270,6 +270,11 @@ class userController {
         { where: { email: isTokenVerified.email } }
       );
 
+      await Token.destroy({
+        where : {
+          token: restoken
+        }
+        })
       return res.status(200).json({
         message: "Success change password",
         success: true,
@@ -287,12 +292,20 @@ class userController {
       const { restoken } = req.params;
       console.log(restoken);
 
-      const isTokenVerified = verifyToken(restoken, process.env.JWT_SECRET_KEY);
+      const cek = await Token.findOne({
+        where: {
+          token : restoken
+        }
+      })
+      console.log(cek)
 
-      if (!isTokenVerified || !isTokenVerified.isEmailVerification) {
-        throw new Error("token is invalid");
-      }
-
+      // if(!isTokenVerified || !isTokenVerified.isEmailVerification){
+      // throw new Error("token is not verified")
+      // }
+      if(!cek){
+        throw new Error("token is not verified")
+        }
+      
       return res.status(200).json({
         message: "Token Reset Pass",
         success: true,
@@ -331,6 +344,12 @@ class userController {
       const token = generateToken({ email: email, isEmailVerification: true });
 
       const resetToken = await resetPassword(email);
+
+      await Token.create({
+        token : token,
+        status: "valid"
+       })
+  
 
       return res.status(200).json({
         message: "Reset Password link has been send to your email",
