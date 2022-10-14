@@ -18,12 +18,12 @@ import Image from 'next/image';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { axiosInstance } from '../../lib/api';
+import { axiosInstance } from "../../../lib/api";
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import qs from 'qs';
 
-export default function ChangePassForm() {
+export default function ForgetPassForm() {
   const [passwordView, setPasswordView] = useState(false);
   const [passwordViewRep, setPasswordViewRep] = useState(false);
   const userSelector = useSelector((state) => state.auth);
