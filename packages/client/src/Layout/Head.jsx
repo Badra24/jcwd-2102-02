@@ -10,7 +10,7 @@ const HeadPage = ({ children, title, description, url, type, image }) => {
           content={description || "Default description"}
         />
 
-        <meta property="og:url" content={url || "http://localhost:3000"} />
+        <meta property="og:url" content={url || "https://jcwd210202.purwadhikabootcamp.com/"} />
         <meta property="og:type" content={type || "website"} />
         <meta property="og:title" content={title || "Default Title"} />
         <meta

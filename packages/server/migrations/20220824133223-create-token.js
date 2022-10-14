@@ -11,14 +11,9 @@ module.exports = {
       token: {
         type: Sequelize.STRING,
       },
-      id_user: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        onDelete: "CASCADE",
-        references: {
-          model: "Users",
-          key: "id",
-        },
+      status: {
+        type: Sequelize.STRING
+       
       },
       createdAt: {
         allowNull: true,
