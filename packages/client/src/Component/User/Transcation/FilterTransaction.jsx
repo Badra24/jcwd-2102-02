@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { DateFilter } from '../../DateFilter';
 import { BiReset } from 'react-icons/bi';
-import {TransactionOption} from '../../../lib/TransactionFilter'
+import { TransactionOption } from '../../../lib/TransactionFilter';
 
 export const FilterTransaction = () => {
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ export const FilterTransaction = () => {
       payload: {
         ...transactionSelector,
         ...v,
+        offset: 0,
       },
     });
   };
@@ -71,12 +72,6 @@ export const FilterTransaction = () => {
           <BiReset />
         </Button>
       </Flex>
-      {/* <Text>status :{transactionSelector.status}</Text>
-      <Text>invoice :{transactionSelector.no_invoice}</Text>
-      <Text>order :{transactionSelector.order}</Text>
-      <Text>orderby :{transactionSelector.orderby}</Text>
-      <Text>datefrom :{transactionSelector.datefrom}</Text>
-      <Text>dateto :{transactionSelector.dateto}</Text> */}
     </>
   );
 };

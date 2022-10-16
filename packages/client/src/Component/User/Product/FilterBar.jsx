@@ -60,11 +60,20 @@ export const FilterBar = ({ data }) => {
 
   return (
     <>
-      <Box minW={{ sm: '1rem', md: '10rem', lg: '15rem' }} m={'2.5rem'}>
+      <Box
+        minW={{ md: '14rem', lg: '18rem' }}
+        m={{ base: '0.5rem', md: '2.5rem' }}
+      >
         <Box shadow="md">
           <FilterInput />
         </Box>
-        <Box border="2px" borderColor={'teal.500'} borderRadius="lg" mt="1rem">
+        <Box
+          border="2px"
+          borderColor={'teal.500'}
+          borderRadius="lg"
+          mt={{ base: 0, md: '1rem' }}
+          display={{ base: 'none', md: 'block' }}
+        >
           <CheckboxGroup colorScheme={'teal'}>
             <Box
               bg="teal.400"

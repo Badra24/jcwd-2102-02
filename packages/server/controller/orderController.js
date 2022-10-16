@@ -72,7 +72,7 @@ class OrderController {
     offset = parseInt(offset);
 
     try {
-      let orderData = await Order.findAll({
+      let orders = await Order.findAll({
         include: [
           {
             model: Address,
@@ -87,7 +87,7 @@ class OrderController {
             attributes: ["id", "quantity", "type"],
             include: {
               model: Product,
-              attributes: ["id", "name", "price"],
+              attributes: ["id", "name", "price", "img_product"],
               include: {
                 model: Product_Stock,
                 attributes: ["id", "primary_stock", "primary_unit"],
@@ -124,11 +124,13 @@ class OrderController {
           ],
         },
         order: order && orderby ? [[order, orderby]] : [["id", "DESC"]],
-        limit: limit ? parseInt(limit) : undefined,
-        offset,
+        // limit: limit ? parseInt(limit) : undefined,
+        // offset,
       });
 
       const totalOrder = await Order.count();
+      const orderData = orders.slice(offset, limit ? offset + 4 : totalOrder);
+
       return res.status(200).json({
         message: "Get Order ",
         result: orderData,
@@ -168,7 +170,7 @@ class OrderController {
             attributes: ["id", "quantity", "type"],
             include: {
               model: Product,
-              attributes: ["id", "name"],
+              attributes: ["id", "name", "img_product"],
               include: {
                 model: Product_Stock,
                 attributes: ["selling_price", "secondary_price"],
@@ -245,7 +247,7 @@ class OrderController {
             attributes: ["id", "quantity", "type"],
             include: {
               model: Product,
-              attributes: ["id", "name"],
+              attributes: ["id", "name", "img_product"],
               include: {
                 model: Product_Stock,
                 attributes: ["selling_price", "secondary_price"],

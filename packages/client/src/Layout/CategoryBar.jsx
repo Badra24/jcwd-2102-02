@@ -29,6 +29,7 @@ export const CategoryBar = () => {
       bg="white"
       border={'1px'}
       borderColor={'gray.200'}
+      display={{ sm: 'none', lg: 'block' }}
     >
       <SimpleGrid
         px={'30px'}

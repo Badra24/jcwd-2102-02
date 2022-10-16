@@ -1,11 +1,4 @@
-import {
-  Heading,
-  Image,
-  Text,
-  useToast,
-  Box,
-  SimpleGrid,
-} from '@chakra-ui/react';
+import { Heading, Image, Text, Box, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 
 import { CourierList } from './CourierList';
@@ -24,7 +17,7 @@ export const ChekcoutList = ({ cartData }) => {
                 return (
                   <Box key={idx}>
                     <Image
-                      src="https://picsum.photos/200"
+                      src={val.Product?.img_product}
                       rounded={'lg'}
                       border="2px"
                       borderColor={'gray.200'}

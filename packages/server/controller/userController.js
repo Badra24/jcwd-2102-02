@@ -180,7 +180,7 @@ class userController {
         full_name,
         phone,
         email,
-        role: "User",
+        role: "user",
       });
 
       console.log(user.id);

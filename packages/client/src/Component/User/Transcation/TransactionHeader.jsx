@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Button, Center, Flex, SimpleGrid } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import {FilterTransaction} from './FilterTransaction' 
+import { FilterTransaction } from './FilterTransaction';
 
-import { TransactionOption } from '../../../lib/TransactionFilter'
+import { TransactionOption } from '../../../lib/TransactionFilter';
 
 export const TransactionHeader = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ export const TransactionHeader = () => {
   };
 
   return (
-    <Box maxW="1440px" mx="auto">
+    <Box maxW="1920px" mx="auto">
       <Center>
         <Box height={'60px'} columns={{ base: 1, md: 3, lg: 5 }}>
           {/* ON Going */}

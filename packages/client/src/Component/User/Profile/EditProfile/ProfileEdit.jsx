@@ -14,6 +14,7 @@ import {
   Text,
   FormHelperText,
   InputGroup,
+  Icon,
 } from '@chakra-ui/react';
 
 import { useEffect, useState } from 'react';

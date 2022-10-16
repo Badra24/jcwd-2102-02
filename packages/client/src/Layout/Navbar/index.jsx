@@ -67,7 +67,7 @@ export default function Simple() {
   return (
     <>
       <Box
-        px={4}
+        px={{ base: 0, md: 4 }}
         align="center"
         bg="white"
         border={'1px'}
@@ -80,7 +80,7 @@ export default function Simple() {
           alignContent="center"
           px={'30px'}
           sx={{
-            maxW: '1440px',
+            maxW: '1920px',
             height: '96px',
             left: '0px',
             top: '0px',
@@ -224,7 +224,34 @@ export default function Simple() {
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
-              <Link>Home</Link>
+              <NextLink fontSize="bold" href="/">
+                <Button
+                  bg="white"
+                  style={
+                    router.pathname == '/'
+                      ? {
+                          textDecoration: 'none',
+                          borderBottomWidth: '4px',
+                          borderBottomColor: 'teal',
+                        }
+                      : { textDecoration: 'none' }
+                  }
+                  _hover={{
+                    borderBottomWidth: '4px',
+                    borderBottomColor: 'teal',
+                  }}
+                  borderRadius={0}
+                  h="75px"
+                  leftIcon={<NextImage src={Home} />}
+                  onClick={() => {
+                    dispatch({ type: 'UNSET_FILTER' });
+                    console.log(filter);
+                  }}
+                >
+                  Home{' '}
+                </Button>
+              </NextLink>
+              {authSelector.id ? <UploadPrescription /> : <></>}
             </Stack>
           </Box>
         ) : null}

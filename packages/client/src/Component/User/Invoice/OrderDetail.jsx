@@ -48,12 +48,13 @@ export const OrderDetail = ({ data }) => {
                             <Flex align="center" gap={6}>
                               {' '}
                               <Image
-                                src="/assets/image/step1.png"
+                                src={val.Product?.img_product}
                                 border={'1px'}
+                                maxH="200px"
                                 borderColor="gray.400"
                                 rounded="lg"
                               />
-                              <Text>{val.Product.name}</Text>
+                              <Text>{val.Product?.name}</Text>
                             </Flex>
                           </Td>
                           <Td>{val.type}</Td>

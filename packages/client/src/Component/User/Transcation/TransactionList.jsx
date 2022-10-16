@@ -59,7 +59,7 @@ export const TransactionList = ({ data }) => {
           return (
             <div key={idx}>
               <Box
-                maxW="1440px"
+                maxW="1920px"
                 mx="auto"
                 my="1rem"
                 p="2rem"
@@ -67,6 +67,7 @@ export const TransactionList = ({ data }) => {
                 rounded="lg"
                 borderColor="gray.300"
               >
+                {val.id}
                 {/* PRESCRIPTION */}
                 {val.status == 'Prescription' ? (
                   <Flex>
@@ -147,7 +148,7 @@ export const TransactionList = ({ data }) => {
                             >
                               <Grid templateColumns="repeat(4, 1fr)" gap="1rem">
                                 <GridItem colSpan={1}>
-                                  <Image src="/assets/image/step1.png" />
+                                  <Image src={v.Product?.img_product} />
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                   <Flex
@@ -156,7 +157,7 @@ export const TransactionList = ({ data }) => {
                                     fontSize={'sm'}
                                   >
                                     <Text fontWeight={'700'}>
-                                      Name: {v.Product.name}
+                                      Name: {v.Product?.name}
                                     </Text>
                                     <Box>
                                       Type:

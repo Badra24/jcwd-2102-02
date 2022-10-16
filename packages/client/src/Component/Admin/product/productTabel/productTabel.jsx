@@ -37,6 +37,7 @@ export default function productTabel(props) {
   const [product, setProduct] = useState([0]);
   const filter = useSelector((state) => state.filterReducer);
   const autoReducer = useSelector((state) => state.renderReducer);
+  const [stateProduct, setStateProduct] = useState(0);
 
   async function getProduct() {
     await axiosInstance
@@ -46,6 +47,11 @@ export default function productTabel(props) {
       .then((res) => {
         const data = res.data.result.products;
         setProduct([...data]);
+
+        setStateProduct({
+          totalProduct: res.data.totalProduct,
+          offset: res.data.result.offset,
+        });
         console.log(res.data.result.products);
       });
   }
@@ -271,7 +277,10 @@ export default function productTabel(props) {
         </Table>
       </TableContainer>
       <Flex justify="center">
-        <PagingList />
+        <PagingList
+          totalItem={stateProduct.totalProduct}
+          offset={stateProduct.offset}
+        />
       </Flex>
     </>
   );

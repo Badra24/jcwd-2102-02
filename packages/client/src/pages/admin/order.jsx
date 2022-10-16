@@ -1,12 +1,14 @@
 import React from 'react';
-import { LayoutAdmin } from '../../Component/Admin/Layout';
+
 import { OrderCointainer } from '../../Component/Admin/Order/OrderCointainer';
+import AdminNavBar from '../../Component/Admin/adminNavbar/AdminNavBar';
 
 const order = () => {
   return (
-    <LayoutAdmin>
+    <>
+      <AdminNavBar />
       <OrderCointainer />
-    </LayoutAdmin>
+    </>
   );
 };
 

@@ -50,6 +50,8 @@ export const OrderCointainer = () => {
     if (authSelector.id) {
       fetchTransaction();
     }
+
+    console.log(transactionSelector);
   }, [authSelector, transactionSelector, render]);
 
   useEffect(() => {
@@ -60,14 +62,13 @@ export const OrderCointainer = () => {
     };
   }, []);
   return (
-    <Flex maxW="1440px" mt="0.2rem" bg="#FAF5FF">
+    <Flex maxW="1920px" mt="0.2rem" bg="#FAF5FF">
       {/* <Box w="270px" border="2px" borderColor={'gray.200'} bg="white" h="90vh">
         sidebar
       </Box> */}
       <SideBar />
-
       <Box>
-        <Box m="1rem" overflow={'auto'} w="1150px" flexWrap={'wrap'}>
+        <Box m="1rem" overflow={'auto'} flexWrap={'wrap'}>
           <Heading fontSize={'20px'}>Order List</Heading>
           <OrderFilter />
           <OrderList data={dataTransaction} />
@@ -76,7 +77,6 @@ export const OrderCointainer = () => {
 
         <Flex justify={'center'} gap="2rem" my="1rem">
           <Button
-            size={'sm'}
             colorScheme={'teal'}
             variant="outline"
             minW={'6rem'}
@@ -88,7 +88,6 @@ export const OrderCointainer = () => {
             Previous
           </Button>
           <Button
-            size={'sm'}
             colorScheme={'teal'}
             minW={'6rem'}
             isDisabled={

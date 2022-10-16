@@ -51,7 +51,7 @@ class productController {
 
       //==================
 
-      const products = await Product.findAll({
+      const dataProducts = await Product.findAll({
         include: [
           {
             model: Category,
@@ -81,13 +81,15 @@ class productController {
             [Op.substring]: [filter],
           },
         },
-
-        offset: offset,
-        limit: 9,
       });
+
+      const products = dataProducts.slice(offset, offset + 9);
+      const totalProduct = await Product.count();
+
       res.status(200).json({
         status: "success",
         result: { products, offset },
+        totalProduct,
         category,
       });
     } catch (error) {

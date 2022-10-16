@@ -4,7 +4,7 @@ import { FiShoppingCart } from 'react-icons/fi';
 import Router from 'next/router';
 import { AddToCartButton } from '../Cart/AddToCartButton';
 
-export const ProductCard = ({ name, price, id }) => {
+export const ProductCard = ({ name, price, id, image }) => {
   return (
     <Stack
       gap={2}
@@ -14,9 +14,9 @@ export const ProductCard = ({ name, price, id }) => {
       _hover={{ shadow: 'xl', cursor: 'pointer' }}
     >
       <Image
-        src="https://picsum.photos/200"
-        w="16rem"
-        h="16rem"
+        src={image}
+        w={{ sm: '10rem', md: '16rem', lg: '24rem' }}
+        h={{ sm: '10rem', md: '16rem', lg: '24rem' }}
         onClick={() => {
           Router.push(`product/${id}`);
         }}
