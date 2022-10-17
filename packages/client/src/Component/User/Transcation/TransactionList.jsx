@@ -67,7 +67,6 @@ export const TransactionList = ({ data }) => {
                 rounded="lg"
                 borderColor="gray.300"
               >
-                {val.id}
                 {/* PRESCRIPTION */}
                 {val.status == 'Prescription' ? (
                   <Flex>
@@ -175,11 +174,11 @@ export const TransactionList = ({ data }) => {
                                       Price:{' '}
                                       {v.type == 'Medicine'
                                         ? 'Rp.' +
-                                          v.Product?.Product_Stock?.selling_price.toLocaleString(
+                                          v.Product?.Product_Stock?.selling_price?.toLocaleString(
                                             'id-ID',
                                           )
                                         : 'Rp.' +
-                                          v.Product?.Product_Stock?.secondary_price.toLocaleString(
+                                          v.Product?.Product_Stock?.secondary_price?.toLocaleString(
                                             'id-ID',
                                           )}
                                     </Text>
@@ -189,7 +188,7 @@ export const TransactionList = ({ data }) => {
                                       {(
                                         v.Product?.Product_Stock
                                           ?.selling_price * v.quantity
-                                      ).toLocaleString('id-ID')}
+                                      )?.toLocaleString('id-ID')}
                                     </Text>
                                   </Flex>
                                 </GridItem>

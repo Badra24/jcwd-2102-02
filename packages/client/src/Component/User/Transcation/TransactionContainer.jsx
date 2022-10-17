@@ -43,6 +43,8 @@ export const TransactionContainer = () => {
     if (authSelector.id) {
       fetchTransaction();
     }
+
+    !authSelector.id ? router.push('/') : null;
   }, [authSelector, transactionSelector]);
 
   useEffect(() => {

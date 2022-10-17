@@ -19,7 +19,7 @@ import {
 
 import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { axiosInstance } from '../../../../lib/api';
 
@@ -29,6 +29,7 @@ import qs from 'qs';
 import { AvatarEdit } from './AvatarEdit';
 import { ConfirmationDialogue } from '../../Dialogue/ConfirmationDialogue';
 import { GoVerified } from 'react-icons/go';
+import ChangePassForm from '../../Authentication/ChangepassForm';
 
 const ProfileEdit = () => {
   const renderSelector = useSelector((state) => state.renderReducer);
@@ -66,7 +67,7 @@ const ProfileEdit = () => {
         .min(6, 'Username min 6 characters')
         .max(30, 'Maximum username length 30'),
       phone: Yup.string()
-        .required('Phone required')
+        .required('Must be only digits')
         .matches(/^\d+$/, 'Must be only digits')
         .min(9, 'Minimum number is 9')
         .max(13, 'Maximum number is 13'),
@@ -81,6 +82,7 @@ const ProfileEdit = () => {
         );
         console.log('res');
         console.log(res);
+
         if (res.status != 200) {
           const errors = res.response.data.error.messages.errors[0].message;
           toast({
@@ -134,11 +136,27 @@ const ProfileEdit = () => {
   };
 
   const handleSubmit = () => {
+    if (
+      formik.errors.phone ||
+      formik.errors.email ||
+      formik.errors.username ||
+      formik.errors.full_name ||
+      formik.errors.phone
+    ) {
+      toast({
+        title: `Error `,
+        status: 'error',
+        isClosable: true,
+      });
+      return;
+    }
     formik.setFieldValue('gender', genderValue);
     formik.handleSubmit();
-    console.log('formik.values');
-    console.log(formik.values);
   };
+
+  useEffect(() => {
+    !authSelector.id ? router.push('/') : null;
+  }, [authSelector]);
 
   return (
     <>
@@ -147,14 +165,15 @@ const ProfileEdit = () => {
         <AvatarEdit image_url={image_url} />
         <Box w="full" p={10} fontSize="xl">
           <Flex gap={8}>
-            <Text mb={12}>Account Information</Text>
+            <Text>Account Information</Text>
             {!authSelector.is_verified ? (
               <Button onClick={sendVerification} colorScheme={'teal'}>
                 Send Verification
               </Button>
             ) : (
-              <Icon as={GoVerified} mt={100} />
+              <Icon as={GoVerified} />
             )}
+            <ChangePassForm />
           </Flex>
           <FormControl py={2} id="full_name" display="flex">
             <FormLabel w="30%">Name</FormLabel>

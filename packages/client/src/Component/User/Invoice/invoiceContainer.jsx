@@ -8,6 +8,9 @@ import { OrderDetail } from './OrderDetail';
 import { OrderSummary } from './OrderSummary';
 import { PaymentInstruction } from './PaymentInstruction';
 import { Shipping } from './Shipping';
+import Logo from '../../../public/Assets/image/MedicareHorizontalLogo.png';
+import checkMark from '../../../public/Assets/image/checkmark.png';
+import NextImage from 'next/image';
 
 export const InvoiceContainer = ({ invoice }) => {
   const [orderData, setOrderData] = useState();
@@ -50,9 +53,9 @@ export const InvoiceContainer = ({ invoice }) => {
                 <Box maxW="1440px" mx="auto" p="2rem" shadow="lg">
                   <Box>
                     <Heading mb="5rem">
-                      <Image src="/Assets/image/MedicareHorizontalLogo.png" />
+                      <NextImage alt={'Logo Image'} src={Logo} />
                       <Box w="full" align="center">
-                        <Image src="/assets/image/checkmark.png" />
+                        <NextImage alt={'checkMark'} src={checkMark} />
                         <Text fontSize={'3xl'}>Thankyou</Text>
                         <Text fontSize={'3xl'}>
                           Your Order Has Been Recived!

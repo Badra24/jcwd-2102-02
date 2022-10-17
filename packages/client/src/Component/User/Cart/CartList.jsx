@@ -74,7 +74,7 @@ export const CartList = ({ cartData }) => {
                     </Text>
                     <Text m="1rem">
                       Rp.{' '}
-                      {val.Product?.Product_Stock?.selling_price.toLocaleString(
+                      {val.Product?.Product_Stock?.selling_price?.toLocaleString(
                         'id-ID',
                       )}
                     </Text>

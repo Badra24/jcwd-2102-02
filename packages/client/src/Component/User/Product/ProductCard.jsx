@@ -15,14 +15,12 @@ export const ProductCard = ({ name, price, id, image }) => {
     >
       <Image
         src={image}
-        w={{ sm: '10rem', md: '16rem', lg: '24rem' }}
-        h={{ sm: '10rem', md: '16rem', lg: '24rem' }}
         onClick={() => {
           Router.push(`product/${id}`);
         }}
       />
       <Text fontWeight={'bold'}>{name}</Text>
-      <Text>{'Rp ' + price.toLocaleString('id-ID')}</Text>
+      <Text>{'Rp ' + price?.toLocaleString('id-ID')}</Text>
       <AddToCartButton id_product={id} />
     </Stack>
   );

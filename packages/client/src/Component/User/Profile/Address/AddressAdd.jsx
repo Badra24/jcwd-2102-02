@@ -48,7 +48,12 @@ const AddresAdd = (props) => {
           formik.values,
         );
         console.log(formik.values);
-        dispatch({ type: 'FETCH_DATA' });
+        dispatch({
+          type: 'FETCH_DATA',
+          payload: {
+            value: !renderSelector.value,
+          },
+        });
         console.log(renderSelector);
         console.log(res);
         if (res.status != 200) {
@@ -104,7 +109,6 @@ const AddresAdd = (props) => {
             bg={useColorModeValue('white', 'gray.700')}
             p={6}
             rounded={'xl'}
-            minH="100vh"
           >
             <Box display="flex" alignItems="center" py={2}>
               <Heading pl={2}>Add Address</Heading>

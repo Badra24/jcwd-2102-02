@@ -33,14 +33,14 @@ export const CartSummary = ({ params, cartData }) => {
         <Text>{cartData.total_item} Items</Text>
         <Spacer />
         <Text>
-          Rp. {parseInt(cartData.total_price).toLocaleString('id-ID')}
+          Rp. {parseInt(cartData.total_price)?.toLocaleString('id-ID')}
         </Text>
       </Flex>
       <Flex h="30%" align="center" borderColor="gray.200">
         <Text>Grand Total</Text>
         <Spacer />
         <Text>
-          Rp. {parseInt(cartData.total_price).toLocaleString('id-ID')}
+          Rp. {parseInt(cartData.total_price)?.toLocaleString('id-ID')}
         </Text>
       </Flex>
       <Box align="center">

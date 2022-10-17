@@ -1,5 +1,9 @@
 import { Box, Flex, Spacer, Text, Image, Stack } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
+import logojne from '../../../public/Assets/image/courier/jnelogo.png';
+import logopos from '../../../public/Assets/image/courier/poslogo.png';
+import logotiki from '../../../public/Assets/image/courier/tikilogo.png';
+import NextImage from 'next/image';
 
 export const Shipping = ({ data }) => {
   useEffect(() => {
@@ -66,7 +70,18 @@ export const Shipping = ({ data }) => {
               borderColor="gray.400"
             >
               <Flex align={'center'}>
-                <Image src={'/assets/image/step1.png'} w="6rem" />
+                <Box w="6rem">
+                  {data.Expedition?.courier == 'jne' ? (
+                    <NextImage alt={'courier logo'} src={logojne} />
+                  ) : data.Expedition?.courier == 'pos' ? (
+                    <NextImage alt={'courier logo'} src={logopos} />
+                  ) : data.Expedition?.courier == 'tiki' ? (
+                    <NextImage alt={'courier logo'} src={logotiki} />
+                  ) : (
+                    ''
+                  )}
+                </Box>
+
                 <Flex direction={'column'} ml="2rem">
                   <Text>{data.Expedition?.description}</Text>
                   <Text fontWeight="bold">
@@ -77,7 +92,7 @@ export const Shipping = ({ data }) => {
                 <Flex direction={'column'}>
                   <Text fontWeight={'bold'}>{data.Expedition?.service}</Text>
                   <Text>
-                    Rp. {data.Expedition?.cost.toLocaleString('id-ID')}
+                    Rp. {data.Expedition?.cost?.toLocaleString('id-ID')}
                   </Text>
                 </Flex>
               </Flex>

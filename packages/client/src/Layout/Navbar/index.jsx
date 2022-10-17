@@ -138,35 +138,33 @@ export default function Simple() {
             <SearchInput maxW="406px" />
             {authSelector.id ? (
               <>
-                <NextLink href="/cart">
-                  <IconButton
-                    bg="white"
-                    size="xl"
-                    aria-label="open menu"
-                    p="0px"
-                    _active={{ bg: 'white' }}
-                    _hover={{ bg: 'white' }}
-                    icon={
-                      <>
-                        <Avatar icon={<FiShoppingCart />} bg="white">
-                          {cartSelector.total_cart <= 0 ? (
-                            <></>
-                          ) : (
-                            <AvatarBadge
-                              boxSize="1.5rem"
-                              bg={'teal.400'}
-                              color="white"
-                              p="4px"
-                              fontSize={'0.7rem'}
-                            >
-                              {cartSelector.total_cart}
-                            </AvatarBadge>
-                          )}
-                        </Avatar>
-                      </>
-                    }
-                  />
-                </NextLink>
+                <Button
+                  bg="white"
+                  size="xl"
+                  aria-label="open menu"
+                  p="0px"
+                  _active={{ bg: 'white' }}
+                  _hover={{ bg: 'white' }}
+                  onClick={() => {
+                    router.push('/cart');
+                  }}
+                >
+                  <Avatar icon={<FiShoppingCart />} bg="white">
+                    {cartSelector.total_cart <= 0 ? (
+                      <></>
+                    ) : (
+                      <AvatarBadge
+                        boxSize="1.5rem"
+                        bg={'teal.400'}
+                        color="white"
+                        p="4px"
+                        fontSize={'0.7rem'}
+                      >
+                        {cartSelector.total_cart}
+                      </AvatarBadge>
+                    )}
+                  </Avatar>
+                </Button>
 
                 <Menu placement="bottom-end">
                   <MenuButton

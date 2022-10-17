@@ -424,38 +424,39 @@ class userController {
         id,
       },
     });
-    const hashedPassword = bcrypt.hashSync(password, 5);
+    try {
+      const hashedPassword = bcrypt.hashSync(password, 5);
 
-    const Match = await bcrypt.compare(oldpassword, oldpass.password);
+      const Match = await bcrypt.compare(oldpassword, oldpass.password);
 
-    if (!Match) {
-      console.log(oldpassword);
+      if (!Match) {
+        console.log(oldpassword);
 
-      throw new Error("old password not Match");
-    }
-
-    const user = await User.update(
-      {
-        password: hashedPassword,
-      },
-      {
-        where: {
-          id,
-        },
+        throw new Error("old password not Match");
       }
-    );
 
-    return res.status(200).json({
-      message: "Success change password",
-      success: user,
-    });
-  }
-  catch(err) {
-    console.log(err);
-    res.status(400).json({
-      message: err.toString(),
-      success: false,
-    });
+      const user = await User.update(
+        {
+          password: hashedPassword,
+        },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+
+      return res.status(200).json({
+        message: "Success change password",
+        success: user,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(400).json({
+        message: err.toString(),
+        success: false,
+      });
+    }
   }
 
   static async uploadProfilePict(req, res) {

@@ -52,7 +52,7 @@ export default function Dashboard() {
   async function getSales() {
     await axiosInstance
       .get('/order', {
-        params: { ...filter, dateFilter },
+        params: { ...filter, ...dateFilter },
       })
       .then((res) => {
         const report = res.data.result;

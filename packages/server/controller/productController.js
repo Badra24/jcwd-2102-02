@@ -104,7 +104,9 @@ class productController {
     try {
       const { id } = req.params;
 
-      const findProduct = await Product.findAll({ where: { id } });
+      const findProduct = await Product.findAll({
+        where: { id },
+      });
 
       return res.status(200).json({
         message: "Get Product",
@@ -179,8 +181,13 @@ class productController {
         include: [
           {
             model: Product,
+            include: {
+              model: Product_Stock,
+              attributes: ["selling_price"],
+            },
           },
         ],
+
         where: {
           id,
         },

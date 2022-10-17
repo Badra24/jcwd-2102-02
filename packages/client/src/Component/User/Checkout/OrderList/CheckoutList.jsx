@@ -26,7 +26,7 @@ export const ChekcoutList = ({ cartData }) => {
                     <Text>{val.quantity} x</Text>
                     <Text>
                       {'Rp ' +
-                        val.Product?.Product_Stock?.selling_price.toLocaleString(
+                        val.Product?.Product_Stock?.selling_price?.toLocaleString(
                           'id-ID',
                         )}
                     </Text>

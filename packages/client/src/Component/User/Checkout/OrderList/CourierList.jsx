@@ -14,6 +14,10 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
+import NextImage from 'next/image';
+import logojne from '../../../../public/Assets/image/courier/jnelogo.png';
+import logopos from '../../../../public/Assets/image/courier/poslogo.png';
+import logotiki from '../../../../public/Assets/image/courier/tikilogo.png';
 
 const courier = [
   { code: 'jne', name: 'Jalur Nugraha Ekakurir (JNE)' },
@@ -29,7 +33,7 @@ export const CourierList = () => {
   const addressSelector = useSelector((state) => state.addressReducer);
 
   const fetchRajaOngkir = async (params) => {
-    setCourierImage(`../Assets/Image/courier/${params}logo.png`);
+    setCourierImage(params);
     if (!addressSelector.id) {
       console.log(addressSelector);
       return toast({
@@ -133,7 +137,18 @@ export const CourierList = () => {
                   }}
                 >
                   <Flex>
-                    <Image src={courierImage} h="3rem" w="4rem" />
+                    <Box maxW="50px">
+                      {courierImage == 'jne' ? (
+                        <NextImage alt={'courier logo'} src={logojne} />
+                      ) : courierImage == 'pos' ? (
+                        <NextImage alt={'courier logo'} src={logopos} />
+                      ) : courierImage == 'tiki' ? (
+                        <NextImage alt={'courier logo'} src={logotiki} />
+                      ) : (
+                        ''
+                      )}
+                    </Box>
+                    {/* <Image src={courierImage} h="3rem" w="4rem" /> */}
                     <Flex direction={'column'} ml="1rem">
                       <Text>{val.description}</Text>
                       <Text fontSize={'xs'} fontWeight="bold">
@@ -144,7 +159,7 @@ export const CourierList = () => {
                     <Flex direction={'column'}>
                       <Text fontWeight={'bold'}>{val.service}</Text>
                       <Text>
-                        Rp. {val.cost[0].value.toLocaleString('id-ID')}
+                        Rp. {val.cost[0].value?.toLocaleString('id-ID')}
                       </Text>
                     </Flex>
                   </Flex>

@@ -60,7 +60,7 @@ export const OrderDetail = ({ data }) => {
                           <Td>{val.type}</Td>
                           <Td>
                             Rp.
-                            {val.Product?.Product_Stock?.selling_price.toLocaleString(
+                            {val.Product?.Product_Stock?.selling_price?.toLocaleString(
                               'id-ID',
                             )}
                           </Td>
@@ -98,7 +98,7 @@ export const OrderDetail = ({ data }) => {
               <Flex align="center" h="50%">
                 <Text> Subtotal</Text>
                 <Spacer />
-                <Text>Rp. {data.total_price.toLocaleString('id-ID')}</Text>
+                <Text>Rp. {data.total_price?.toLocaleString('id-ID')}</Text>
               </Flex>
               <Flex
                 h="50%"
@@ -108,12 +108,12 @@ export const OrderDetail = ({ data }) => {
               >
                 <Text> Delivery Fee</Text>
                 <Spacer />
-                <Text>Rp. {data.shipping_cost.toLocaleString('id-ID')}</Text>
+                <Text>Rp. {data.shipping_cost?.toLocaleString('id-ID')}</Text>
               </Flex>
               <Flex align="center" h="50%">
                 <Text> Grand Total</Text>
                 <Spacer />
-                <Text>Rp. {data.total_payment.toLocaleString('id-ID')}</Text>
+                <Text>Rp. {data.total_payment?.toLocaleString('id-ID')}</Text>
               </Flex>
             </Stack>
           </Flex>

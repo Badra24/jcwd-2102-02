@@ -1,4 +1,4 @@
-import { Box, Stack, Text, Image, Heading } from '@chakra-ui/react';
+import { Box, Stack, Text, Image, Heading, Button } from '@chakra-ui/react';
 
 import React, { useState } from 'react';
 
@@ -27,8 +27,13 @@ export const ProductDetailContainer = ({ val }) => {
             </Text>
             <Box h="60%" w="30%" shadow="lg" p={6} rounded="xl">
               <Stack spacing={'2rem'} pt={'1rem'}>
-                <Text>Rp. {val.Product?.price.toLocaleString('id-ID')}</Text>
-                <AddToCartButton id_product={val.Product.id} />
+                <Text>
+                  Rp.{' '}
+                  {val.Product?.Product_Stock?.selling_price?.toLocaleString(
+                    'id-ID',
+                  )}
+                </Text>
+                <AddToCartButton id_product={val.Product?.id} />
               </Stack>
             </Box>
           </Stack>

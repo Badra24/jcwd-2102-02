@@ -267,7 +267,6 @@ export default function UpdateTabel(props) {
                         async function submit() {
                           await formik.handleSubmit();
                           onClose();
-                          alert(idUp);
                         }
                         submit();
                       }}
