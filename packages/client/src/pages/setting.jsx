@@ -30,7 +30,7 @@ const Setting = () => {
             <AddressList />
           </Box>
         </Flex>
-
+            
         <Spacer />
       </Layout>
     </>

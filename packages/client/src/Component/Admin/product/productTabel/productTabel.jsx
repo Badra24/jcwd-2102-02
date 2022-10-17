@@ -239,14 +239,12 @@ export default function productTabel(props) {
                   />
                 </Td>
                 <Td>
-                  <Button>
                     <ProductCat
                       // idProCat={val.id}
                       // idCetPro={val.id_categpory}
                       idPro={product.id}
                       catlist={product.Categories}
                     />
-                  </Button>
                 </Td>
                 <Td>
                   <UpdateStock

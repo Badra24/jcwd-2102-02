@@ -127,13 +127,13 @@ export default function App(props) {
                 <AddStock id={dataProduct.id} />
               </Button>
             </Box>
-            <Box>
+            <Box  mb="20px" mt="10px">
               <Button>
                 <AddDescription val={dataProduct.id} />
               </Button>
             </Box>
 
-            <Box>
+            <Box  mb="20px" mt="10px">
               <Button>
                 <AddProductCategory idProcat={dataProduct.id} />
               </Button>

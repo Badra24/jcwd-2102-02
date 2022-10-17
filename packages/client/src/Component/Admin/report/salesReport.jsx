@@ -39,7 +39,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import MyChart from '../cart/MyChart';
 import { DateFilter } from '../../DateFilter';
-export default function Dashboard() {
+export default function SalesReport() {
   const filter = useSelector((state) => state.filterReducer);
   const userSelector = useSelector((state) => state.authReducer);
   const dateFilter = useSelector((state) => state.transactionReducer);
@@ -52,7 +52,7 @@ export default function Dashboard() {
   async function getSales() {
     await axiosInstance
       .get('/order', {
-        params: { ...filter, dateFilter },
+        params: { ...filter, ...dateFilter },
       })
       .then((res) => {
         const report = res.data.result;
