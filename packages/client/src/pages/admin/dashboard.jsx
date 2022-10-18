@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import SalesReport from '../../Component/Admin/report/salesReport';
 import ProductHistory from '../../Component/Admin/product/product_history/productHistory';
 import SortProduct from '../../Component/Admin/product/sortProduct/sortDashboard';
+import AdminNavBar from '../../Component/Admin/adminNavbar/AdminNavBar';
 export default function dashboard() {
   const router = useRouter();
   const userSelector = useSelector((state) => state.authReducer);
@@ -20,6 +21,7 @@ export default function dashboard() {
 
   return (
     <>
+      <AdminNavBar />
       <Flex bgGradient="linear(to-tr, #ffffff 50%, #ffffff  )">
         <SideBar />
         <Box>

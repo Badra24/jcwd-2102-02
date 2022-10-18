@@ -4,6 +4,7 @@ const initialState = {
   order: '',
   orderby: '',
   offset: 0,
+  totalProduct: 0,
   banner: true,
 };
 
@@ -15,6 +16,7 @@ const filterReducer = (state = initialState, action) => {
       order: action.payload.order,
       orderby: action.payload.orderby,
       offset: action.payload.offset,
+      totalProduct: action.payload.totalProduct,
       banner: action.payload.banner,
     };
   }

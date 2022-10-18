@@ -133,7 +133,6 @@ const AddressEdit = ({ id }) => {
               bg={useColorModeValue('white', 'gray.700')}
               p={6}
               rounded={'xl'}
-              minH="100vh"
             >
               <Box display="flex" alignItems="center" py={2}>
                 <Heading pl={2}>Edit Address </Heading>

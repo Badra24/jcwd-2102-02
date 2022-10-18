@@ -1,11 +1,18 @@
-import { Box, Heading, Text, HStack, Spacer, useToast } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Text,
+  HStack,
+  Spacer,
+  useToast,
+  Button,
+  Image,
+} from '@chakra-ui/react';
 import React from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { NumberInput } from './NumberInput';
-import NextImage from 'next/image';
 import { axiosInstance } from '../../../lib/api';
-import ItemImage from '../../../public/Assets/image/step1.png';
 
 export const CartList = ({ cartData }) => {
   const dispatch = useDispatch();
@@ -46,20 +53,19 @@ export const CartList = ({ cartData }) => {
             return (
               <div key={idx}>
                 <Box
-                  display="flex"
+                  display={{ sm: 'block', md: 'flex' }}
                   p="2rem"
                   borderBottom="4px"
                   borderColor={'gray.200'}
                 >
                   <Box
-                    maxW="170px"
                     borderColor={'gray.200'}
                     borderWidth={'2px'}
                     rounded={'lg'}
                   >
-                    <NextImage src={ItemImage} />
+                    <Image src={val.Product?.img_product} mx="auto" />
                   </Box>
-                  <Box mx="2rem">
+                  <Box mx={{ sm: 'auto', md: '2rem' }}>
                     <Text m="1rem" fontWeight={'bold'} fontSize="xl">
                       {val.Product.name}
                     </Text>
@@ -68,7 +74,7 @@ export const CartList = ({ cartData }) => {
                     </Text>
                     <Text m="1rem">
                       Rp.{' '}
-                      {val.Product?.Product_Stock?.selling_price.toLocaleString(
+                      {val.Product?.Product_Stock?.selling_price?.toLocaleString(
                         'id-ID',
                       )}
                     </Text>

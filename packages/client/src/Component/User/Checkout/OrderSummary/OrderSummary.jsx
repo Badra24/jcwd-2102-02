@@ -101,17 +101,17 @@ export const OrderSummary = ({ cartData }) => {
       <Flex h="20%" align="center">
         <Text>{total_item} Items</Text>
         <Spacer />
-        <Text>Rp. {parseInt(total_price).toLocaleString('id-ID')}</Text>
+        <Text>Rp. {parseInt(total_price)?.toLocaleString('id-ID')}</Text>
       </Flex>
       <Flex h="20%" align="center" borderBottom={'4px'} borderColor="gray.200">
         <Text> Delivery Fee</Text>
         <Spacer />
-        <Text>Rp. {cost.toLocaleString('id-ID')}</Text>
+        <Text>Rp. {cost?.toLocaleString('id-ID')}</Text>
       </Flex>
       <Flex h="30%" align="center" borderColor="gray.200">
         <Text>Grand Total</Text>
         <Spacer />
-        <Text>Rp. {grandTotal.toLocaleString('id-ID')}</Text>
+        <Text>Rp. {grandTotal?.toLocaleString('id-ID')}</Text>
       </Flex>
       <Box align="center">
         <ConfirmationDialogue

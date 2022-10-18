@@ -11,12 +11,12 @@ export const TransactionOption = {
       order: 'id',
     },
     {
-      label: 'Newest Date',
+      label: 'Latest Date',
       orderby: 'ASC',
       order: 'createdAt',
     },
     {
-      label: 'Latest Date',
+      label: 'Newwest Date',
       orderby: 'DESC',
       order: 'createdAt',
     },

@@ -19,7 +19,7 @@ const ProductDetail = ({ val }) => {
       <HeadPage
         title={`Medicure || ${val.name}`}
         //   description={dataPost?.caption}
-        image={val.image_product}
+        image={val.Product?.img_product}
         url={url}
         type="website"
       />
@@ -45,7 +45,8 @@ const ProductDetail = ({ val }) => {
 export async function getServerSideProps(context) {
   const { id } = context.params;
   const res = await axios.get(
-    `https://jcwd210202.purwadhikabootcamp.com/api/v1/product/${id}/description`,
+    `https://jcwd210202api.purwadhikabootcamp.com/api/v1/product/${id}/description`,
+    // `http://localhost:3333/api/v1/product/${id}/description`,
   );
   // const res = await axios.get(
   //   `/api/v1/product/${id}/description`,

@@ -32,9 +32,6 @@ export const AddressList = () => {
       const res = await axiosInstance.patch(`/address/${params}`, {
         is_deleted: 'deleted',
       });
-      if (res.status != 200) {
-        throw new Error(res.message);
-      }
       toast({
         title: 'Address Deleted',
         status: 'success',

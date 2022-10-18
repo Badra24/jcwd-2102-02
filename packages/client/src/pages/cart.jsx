@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Heading } from '@chakra-ui/react';
+import { Box, Flex, Heading } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CartList } from '../Component/User/Cart/CartList';
@@ -36,24 +36,18 @@ const cart = () => {
   return (
     <Layout>
       <Box align="center" bg="gray.100">
-        <Box w="1440px" px="2rem">
+        <Box maxW="1920px" px="2rem">
           <Heading textAlign={'start'} pt="2rem" pb="1rem" fontSize={'32px'}>
             Shopping Cart
           </Heading>
-          <Grid
-            w="100%"
-            minH="100vh"
-            templateColumns="repeat(7, 1fr)"
-            gap={4}
-            pb="2rem"
-          >
-            <GridItem colSpan={5} textAlign={'start'} rounded="lg">
+          <Flex display={{ sm: 'block', md: 'flex' }}>
+            <Box textAlign={'start'} rounded="lg" w={{ md: '75%' }}>
               <CartList cartData={cartData} />
-            </GridItem>
-            <GridItem colSpan={2}>
+            </Box>
+            <Box w={{ md: '25%' }}>
               <CartSummary cartData={cartData} />
-            </GridItem>
-          </Grid>
+            </Box>
+          </Flex>
         </Box>
       </Box>
     </Layout>

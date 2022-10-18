@@ -66,7 +66,7 @@ export const OrderList = ({ data }) => {
                 {/* Header */}
                 <Flex borderBottom={'2px'} borderColor={'gray.200'} p="1rem">
                   <Checkbox>
-                    {val.status} ({moment(val.createdAt).format('LL')}) {val.id}
+                    {val.status} ({moment(val.createdAt).format('LL')})
                   </Checkbox>
                   <Spacer />
 
@@ -192,7 +192,7 @@ export const OrderList = ({ data }) => {
                                         </Td>
                                         <Td>
                                           Rp.
-                                          {v.Product?.price.toLocaleString(
+                                          {v.Product?.Product_Stock?.selling_price?.toLocaleString(
                                             'id-ID',
                                           )}
                                         </Td>

@@ -67,7 +67,7 @@ export default function Simple() {
   return (
     <>
       <Box
-        px={4}
+        px={{ base: 0, md: 4 }}
         align="center"
         bg="white"
         border={'1px'}
@@ -80,7 +80,7 @@ export default function Simple() {
           alignContent="center"
           px={'30px'}
           sx={{
-            maxW: '1440px',
+            maxW: '1920px',
             height: '96px',
             left: '0px',
             top: '0px',
@@ -139,35 +139,33 @@ export default function Simple() {
             <SearchInput maxW="406px" />
             {authSelector.id ? (
               <>
-                <NextLink href="/cart">
-                  <IconButton
-                    bg="white"
-                    size="xl"
-                    aria-label="open menu"
-                    p="0px"
-                    _active={{ bg: 'white' }}
-                    _hover={{ bg: 'white' }}
-                    icon={
-                      <>
-                        <Avatar icon={<FiShoppingCart />} bg="white">
-                          {cartSelector.total_cart <= 0 ? (
-                            <></>
-                          ) : (
-                            <AvatarBadge
-                              boxSize="1.5rem"
-                              bg={'teal.400'}
-                              color="white"
-                              p="4px"
-                              fontSize={'0.7rem'}
-                            >
-                              {cartSelector.total_cart}
-                            </AvatarBadge>
-                          )}
-                        </Avatar>
-                      </>
-                    }
-                  />
-                </NextLink>
+                <Button
+                  bg="white"
+                  size="xl"
+                  aria-label="open menu"
+                  p="0px"
+                  _active={{ bg: 'white' }}
+                  _hover={{ bg: 'white' }}
+                  onClick={() => {
+                    router.push('/cart');
+                  }}
+                >
+                  <Avatar icon={<FiShoppingCart />} bg="white">
+                    {cartSelector.total_cart <= 0 ? (
+                      <></>
+                    ) : (
+                      <AvatarBadge
+                        boxSize="1.5rem"
+                        bg={'teal.400'}
+                        color="white"
+                        p="4px"
+                        fontSize={'0.7rem'}
+                      >
+                        {cartSelector.total_cart}
+                      </AvatarBadge>
+                    )}
+                  </Avatar>
+                </Button>
 
                 <Menu placement="bottom-end">
                   <MenuButton
@@ -225,7 +223,34 @@ export default function Simple() {
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
-              <Link>Home</Link>
+              <NextLink fontSize="bold" href="/">
+                <Button
+                  bg="white"
+                  style={
+                    router.pathname == '/'
+                      ? {
+                          textDecoration: 'none',
+                          borderBottomWidth: '4px',
+                          borderBottomColor: 'teal',
+                        }
+                      : { textDecoration: 'none' }
+                  }
+                  _hover={{
+                    borderBottomWidth: '4px',
+                    borderBottomColor: 'teal',
+                  }}
+                  borderRadius={0}
+                  h="75px"
+                  leftIcon={<NextImage src={Home} />}
+                  onClick={() => {
+                    dispatch({ type: 'UNSET_FILTER' });
+                    console.log(filter);
+                  }}
+                >
+                  Home{' '}
+                </Button>
+              </NextLink>
+              {authSelector.id ? <UploadPrescription /> : <></>}
             </Stack>
           </Box>
         ) : null}

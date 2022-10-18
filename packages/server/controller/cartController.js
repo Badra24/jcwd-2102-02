@@ -78,7 +78,7 @@ class CartController {
             attributes: ["id", "quantity"],
             include: {
               model: Product,
-              attributes: ["id", "name"],
+              attributes: ["id", "name", "img_product"],
               include: {
                 model: Product_Stock,
                 attributes: ["selling_price"],

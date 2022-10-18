@@ -31,7 +31,7 @@ export const OrderSummary = ({ data }) => {
             >
               <Text>{data.no_invoice}</Text>
               <Text>BCA Trasnfer</Text>
-              <Text>Rp. {data.total_payment.toLocaleString('id-ID')}</Text>
+              <Text>Rp. {data.total_payment?.toLocaleString('id-ID')}</Text>
               <Text>Pay Before</Text>
             </Flex>
           </Flex>

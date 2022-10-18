@@ -1,4 +1,4 @@
-import { Box, Stack, Text, Image, Heading } from '@chakra-ui/react';
+import { Box, Stack, Text, Image, Heading, Button } from '@chakra-ui/react';
 
 import React, { useState } from 'react';
 
@@ -8,9 +8,9 @@ export const ProductDetailContainer = ({ val }) => {
   return (
     <Box px={4} align="center">
       <Box
-        maxW={'1440px'}
+        maxW={'1920px'}
         borderColor="white"
-        display={{ md: 'flex' }}
+        display={{ md: 'block' }}
         p={'2.5rem'}
       >
         <Stack spacing={4}>
@@ -19,7 +19,7 @@ export const ProductDetailContainer = ({ val }) => {
           </Heading>
 
           <Stack direction={'row'} align="center">
-            <Image src="https://picsum.photos/200" w="45%" />
+            <Image src={val.Product?.img_product} w="45%" />
             <Text textAlign={'start'} p="4rem">
               {val.purpose} Lorem ipsum dolor sit amet consectetur adipisicing
               elit. Laudantium nihil quaerat fugit illo exercitationem illum
@@ -27,8 +27,13 @@ export const ProductDetailContainer = ({ val }) => {
             </Text>
             <Box h="60%" w="30%" shadow="lg" p={6} rounded="xl">
               <Stack spacing={'2rem'} pt={'1rem'}>
-                <Text>Rp. {val.Product?.price.toLocaleString('id-ID')}</Text>
-                <AddToCartButton id_product={val.Product.id} />
+                <Text>
+                  Rp.{' '}
+                  {val.Product?.Product_Stock?.selling_price?.toLocaleString(
+                    'id-ID',
+                  )}
+                </Text>
+                <AddToCartButton id_product={val.Product?.id} />
               </Stack>
             </Box>
           </Stack>

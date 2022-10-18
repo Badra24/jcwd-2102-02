@@ -35,7 +35,7 @@ export default function Dashboard() {
   async function getHistory() {
     await axiosInstance
       .get('/product_history', {
-        params: { ...filter, ...dateFilter },
+        params: { ...filter, dateFilter },
       })
       .then((res) => {
         console.log(res);

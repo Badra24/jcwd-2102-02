@@ -16,7 +16,7 @@ export const SearchInput = () => {
   const [state, setState] = useState();
   const filter = useSelector((state) => state.filterReducer);
   return (
-    <InputGroup>
+    <InputGroup display={{ base: 'none', md: 'block' }}>
       <InputLeftElement color="gray.400">
         <FaSearch />
       </InputLeftElement>

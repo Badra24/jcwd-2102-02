@@ -12,7 +12,7 @@ export default function SideBar() {
 
   return (
     <Box h="300rem" bg="blue">
-      <Link href="/home">
+      <Link href="/">
         <HStack
           height="150px"
           w="240px"
