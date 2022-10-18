@@ -39,7 +39,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import MyChart from '../cart/MyChart';
 import { DateFilter } from '../../DateFilter';
-export default function Dashboard() {
+export default function SalesReport() {
   const filter = useSelector((state) => state.filterReducer);
   const userSelector = useSelector((state) => state.authReducer);
   const dateFilter = useSelector((state) => state.transactionReducer);

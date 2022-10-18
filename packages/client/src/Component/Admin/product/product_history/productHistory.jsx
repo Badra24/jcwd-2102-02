@@ -40,8 +40,6 @@ export default function Dashboard() {
       .then((res) => {
         console.log(res);
         const story = res.data.result.product_histories;
-        console.log('sotort');
-        console.log(story);
         setHistory(story);
       });
   }

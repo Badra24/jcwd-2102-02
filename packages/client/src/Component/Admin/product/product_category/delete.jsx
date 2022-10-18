@@ -35,7 +35,8 @@ export default function DeletProduct (props) {
   // const {id} = useParams()
   const {  id_cat, id_pro } = props;
     const { isOpen: isOpenDelete, onOpen: onOpenDelete, onClose: onCloseDelete } = useDisclosure()  
-    const userSelector = useSelector ((state)=> state.auth)
+    const dispatch = useDispatch();
+    const autoReducer = useSelector((state) => state.renderReducer)
 
 const toast = useToast()
 
@@ -45,7 +46,12 @@ const toast = useToast()
           
     
           await axiosInstance.delete(`/product_category/?id_cat=` + id_cat + `&id_prod=` + id_pro)
-
+          dispatch({
+            type: 'FETCH_DATA',
+            payload: {
+              value: !autoReducer.value,
+            },
+          });
           
     
           toast({

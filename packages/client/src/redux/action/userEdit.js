@@ -32,7 +32,6 @@ export function userEdit(values, setSubmitting) {
       setSubmitting(false);
     } catch (err) {
       console.log(err);
-      alert("sd")
       setSubmitting(false);
     }
   };

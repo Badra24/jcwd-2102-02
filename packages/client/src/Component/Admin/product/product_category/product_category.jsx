@@ -29,17 +29,14 @@ import { axiosInstance } from '../../../../lib/api';
 import { useSelector, useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import qs from 'qs';
-import UpdateProCat from './Update';
+import {BsCart} from "react-icons/bs"
 import DeletProductCat from './delete';
 import { Form } from 'react-router-dom';
 // import { Select } from 'chakra-react-select';
 
 export default function updateTabel(props) {
-  const {
-    isOpen: isOpenUpdate,
-    onOpen: onOpenUpdate,
-    onClose: onCloseUpdate,
-  } = useDisclosure();
+  const { isOpen, onOpen, onClose} = useDisclosure()
+
 
   const { idPro, catlist } = props;
 
@@ -108,12 +105,16 @@ export default function updateTabel(props) {
   }, []);
 
   return (
+    <>
+    
+    <Button focusBorderColor="black" color="#00A8B5" ml="10px" onClick={onOpen} >
+    <Icon as={BsCart}/>
+   </Button>
     <Menu>
-      <MenuItem onClick={onOpenUpdate}>
-        <Text>Product Category</Text>
+      <MenuItem >
       </MenuItem>
 
-      <Modal isOpen={isOpenUpdate} onClose={onCloseUpdate} size="lg">
+      <Modal isOpen={isOpen} onClose={onClose} size="lg">
         <ModalOverlay
           bg="blackAlpha.300"
           backdropFilter="blur(10px) hue-rotate(90deg)"
@@ -121,39 +122,11 @@ export default function updateTabel(props) {
 
         <ModalContent>
           <ModalHeader>
-            Product Cateogry
-            {idPro}
+           
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <FormControl as={GridItem} colSpan={[3, 2]}>
-              <FormLabel
-                fontSize="sm"
-                fontWeight="md"
-                color="gray.700"
-                _dark={{
-                  color: 'gray.50',
-                }}
-              >
-                {idPro}
-              </FormLabel>
-              <FormLabel
-                fontSize="sm"
-                fontWeight="md"
-                color="gray.700"
-                _dark={{
-                  color: 'gray.50',
-                }}
-              >
-                id Product
-                {idPro}
-              </FormLabel>
-              <Input
-                onChange={(e) => {
-                  formik.setFieldValue('id_product', e.target.value);
-                }}
-              />
-            </FormControl>
+          
 
             {catlist?.map((val, index) => (
               <Box display="flex" flexWrap="wrap" justifyContent="space-evenly">
@@ -177,7 +150,6 @@ export default function updateTabel(props) {
                         ) : (
                           <option value={cat.id}> {cat.category} </option>
                         ),
-                      // alert(cat.id)
                     )}
                   </Select>
                 </FormControl>
@@ -216,5 +188,6 @@ export default function updateTabel(props) {
         </ModalContent>
       </Modal>
     </Menu>
+    </>
   );
 }

@@ -19,6 +19,7 @@ import {
     const { isOpen: isOpenDelete, onOpen: onOpenDelete, onClose: onCloseDelete } = useDisclosure()
     const { tbname, tbcode, tbimg_url, tbprice, tbUserId, tbId,tbDate  } = props
     const userSelector = useSelector((state) => state.auth)
+    const autoReducer = useSelector((state) => state.renderReducer)
 
     const toast = useToast();
     const [editInput, setEditInput] = useState(false)
@@ -28,7 +29,12 @@ import {
       try {
        
         await axiosInstance.delete("/product/delete" + tbId)
-    
+        dispatch({
+          type: 'FETCH_DATA',
+          payload: {
+            value: !autoReducer.value,
+          },
+        });
         toast({
           title: "Succes",
           description: "Succes deleting product",

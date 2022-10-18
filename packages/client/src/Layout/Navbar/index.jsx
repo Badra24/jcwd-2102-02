@@ -27,7 +27,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Logo1 from '../../public/Assets/image/MedicareHorizontalLogo.png';
 import Home from '../../public/Assets/Icon/Home.png';
 import jsCookie from 'js-cookie';
-import Router from 'next/router';
+import {TbReceipt} from "react-icons/tb"
 import NextImage from 'next/image';
 import { UploadPrescription } from '../../Component/User/Prescription/UploadPrescription';
 import SwitchForm from '../../Component/User/Authentication/SwitchForm';
@@ -131,7 +131,8 @@ export default function Simple() {
                   Home{' '}
                 </Button>
               </NextLink>
-              {authSelector.id ? <UploadPrescription /> : <></>}
+             
+              {authSelector.id ? <UploadPrescription />  : <></>}
             </HStack>
           </HStack>
           <Flex alignItems={'center'} gap={6}>
