@@ -357,7 +357,7 @@ class OrderController {
 
       await Order.update(
         {
-          payment_receipt: `http://${uploadFileDomain}/${filePath}/${filename}`,
+          payment_receipt: `${uploadFileDomain}/${filePath}/${filename}`,
           status: "Payment",
         },
         { where: { id } }
